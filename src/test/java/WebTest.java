@@ -7,15 +7,19 @@ public class WebTest {
 
     @Test
     public void testOne() throws InterruptedException {
+        String chromeDriver = "webdriver.chrome.driver";
+        String driverPath = "/Applications/ChromeDriver/chromedriver";
+        String url = "http://www.99-bottles-of-beer.net/";
+        String expectedResult = "http://www.99-bottles-of-beer.net/";
 
-        System.setProperty("webdriver.chrome.driver", "/Applications/ChromeDriver/chromedriver");
-
+        System.setProperty(chromeDriver, driverPath);
         WebDriver driver = new ChromeDriver();
 
-        //Thread.sleep(5000);
+        driver.get(url);
+        Thread.sleep(5000);
 
         String actualResult = driver.getCurrentUrl();
-        //Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
 
         driver.close();
         driver.quit();
