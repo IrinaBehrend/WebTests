@@ -36,8 +36,8 @@ public class ExelonTest {
         WebElement gridTest = driver.findElement(By.xpath("//div[@id='exelon-main-nav']" +
                 "/ul[@class='nav navbar-nav navbar-right']/li/a[@href='/grid']"));
         gridTest.click();
-        WebElement innovationTest = driver.findElement(By.xpath("//form[@id='aspnetForm']/div//div//div//div" +
-                "[@id='WebPartWPQ1']/div//ul[@id='topNav']/li[@class='term-nav active']/a[\"Innovation\"]"));
+        WebElement innovationTest = driver.findElement(By.xpath("//form[@id='aspnetForm']/div//div//div//div/div//" +
+                "ul[@id='topNav']/li[4]/a[\"Innovation\"]"));
         innovationTest.click();
 
         String actualResult = driver.getCurrentUrl();
