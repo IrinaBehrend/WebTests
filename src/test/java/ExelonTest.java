@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class ExelonTest {
 
     private WebDriver driver;
@@ -17,6 +19,8 @@ public class ExelonTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
     @AfterMethod
@@ -26,12 +30,10 @@ public class ExelonTest {
     }
 
     @Test
-    public void firstTest() throws InterruptedException {
-
+    public void irinaBTest() {
         String expectedResult = "https://www.exeloncorp.com/grid";
 
         driver.get(url);
-        Thread.sleep(5000);
 
         WebElement gridTest = driver.findElement(By.xpath("//div[@id='exelon-main-nav']" +
                 "/ul[@class='nav navbar-nav navbar-right']/li/a[@href='/grid']"));
@@ -43,7 +45,6 @@ public class ExelonTest {
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult, expectedResult);
     }
-
 }
 
 /*
